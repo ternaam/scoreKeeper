@@ -9,7 +9,35 @@
 	right: 28px;
 }
 table{text-align: left;}
-td{vertical-align: middle !important;}
+td{vertical-align: middle !important; border:none !important}
+
+tbody{display: flex; 
+	flex-flow: wrap;}
+tr{border-style: solid;
+	border-width: 2px;
+	border: black;
+	display: flex;
+	flex-flow: column;
+	width: 300px;}
+
+.maincont{
+	margin: 100px;
+	}
+.name{
+	font-size: 54px;
+	font-family: Impact, Charcoal, sans-serif;
+	word-break: break-all;
+	line-height: 82% !important;
+	flex-grow: 2;
+}
+.points{
+	font-size: 54px;
+	font-family: Impact, Charcoal, sans-serif;
+	color: red;
+	font-style: italic;
+	text-shadow: 1px 1px 0px #000;
+}
+
 #history{margin-top: 14px;}
 #history li{list-style-type: none;}
 .fade-transition{
