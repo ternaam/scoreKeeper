@@ -20,6 +20,9 @@ tr{border-style: solid;
 	flex-flow: column;
 	width: 300px;}
 
+.maincont{
+	margin: 100px;
+	}
 .name{
 	font-size: 54px;
 	font-family: Impact, Charcoal, sans-serif;
