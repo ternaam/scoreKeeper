@@ -38,7 +38,7 @@ new Vue({
                     return this.warning = 'This name is not available.';
             this.warning = '';
             this.playerCount++;
-            this.players.push({name: name.toLowerCase(), points: 0});
+            this.players.push({name: name.toLowerCase(), points: 0, color: this.randColor()});
             this.addHistory(name + ' has join the game.');
             this.name = '';
             this.updateRank();
@@ -112,6 +112,10 @@ new Vue({
             localStorage.removeItem('sKPlayers');
             localStorage.removeItem('sKHistory');
         },
+
+	randColor: function() {
+	   return 'hsl('+Math.floor(Math.random()*361)+',80%,70%)'; 
+	},
 
         refresh: function(samePlayers) {
             if(samePlayers) {
