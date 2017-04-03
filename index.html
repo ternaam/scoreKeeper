@@ -29,7 +29,7 @@
 		<div class="">
 			<table class="table">
 				<tbody>
-					<tr v-for="player in players" transition="fade" :style="{'background-color':  player.color }">
+					<tr v-for="player in players" transition="fade" :key="player.id" :style="{'background-color':  player.color }">
 						<td v-if="$index+1 < 4" class="rank{{$index+1}}"> {{ $index+1 | rank }} </td>
 						<td v-else> {{ $index+1 | rank }} </td>
 						<td class="name">{{ player.name | capitalize }}

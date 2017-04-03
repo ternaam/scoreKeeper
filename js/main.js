@@ -101,7 +101,7 @@ new Vue({
 
         sortRank: function() {
             this.players.sort(function(a, b) {
-                return a.points < b.points;
+		return a.points > b.points ? -1 : a.points === b.points ? 0 : 1
             });
         },
 
