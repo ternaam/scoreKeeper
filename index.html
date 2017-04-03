@@ -29,18 +29,24 @@
 		<div class="">
 			<table class="table">
 				<tbody>
-					<tr v-for="player in players" transition="fade">
+					<tr v-for="player in players" transition="fade" :style="{'background-color':  player.color }">
 						<td v-if="$index+1 < 4" class="rank{{$index+1}}"> {{ $index+1 | rank }} </td>
 						<td v-else> {{ $index+1 | rank }} </td>
-						<td>{{ player.name | capitalize }}</td>
-						<td>{{ player.points }}</td>
-						<td v-show="!gameOver"><button v-on:click="addPoints($index)" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span></button></td> 
-						<td v-show="!gameOver"><button v-on:click="reducePoints($index)" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button></td> 
-						<td v-show="!gameOver"><button v-on:click="resetScore($index)" class="btn btn-default"><span class="glyphicon glyphicon-repeat"></span></button></td>
-						<td v-show="!gameOver"><button v-on:click="removePlayer($index)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button></td>
+						<td class="name">{{ player.name | capitalize }}
+						  <span class="points">{{ player.points }}</span></td>
+						<td v-show="!gameOver" class="btn-group"><button v-on:click="addPoints($index, 1)" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span></button>
+						<button v-on:click="addPoints($index, 3)" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span><span class="glyphicon glyphicon-plus-sign"></span><span class="glyphicon glyphicon-plus-sign"></span></button>
+						<button v-on:click="reducePoints($index)" class="btn btn-default"><span class="glyphicon glyphicon-minus-sign"></span></button>
+						<button v-on:click="removePlayer($index)" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span></button></td>
 					</tr>
 				</tbody>
 			</table>
+		</div>
+
+		<div v-show="!gameOver">
+			<label for="newPlayer">Add a player : </label>
+			<input id="newPlayer" type="text" v-model="name" v-on:keyup.enter="addPlayer()" autofocus>
+			<button v-on:click="addPlayer()" class="btn btn-default">Add</button><br/>
 		</div>
 
 		<div v-show="players.length && !gameOver">
@@ -61,11 +67,6 @@
 
 	</div>
 
-	<footer class="navbar navbar-default navbar-fixed-bottom">
-		<div class="container">
-			<a class="navbar-brand" href="https://github.com/Oli8/scoreKeeper" target="_blank">Sources</a>
-		</div>
-	</footer>
 
 	<script src="js/vue.js"></script>
 	<script src="js/vue-animated-list.js"></script>

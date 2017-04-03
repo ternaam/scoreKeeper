@@ -1,7 +1,15 @@
+var teamNames = [
+"Zombie girls ", "D.Z.V.D.B. ", "Breinbrekers ", "Bonecrashers ", 
+"Bloederige Wolven ", "ZomSpi's ", "Zombie killers ", "The walking dead ", 
+"Tienduizend Scouting Zombies ", "Diva's van Doeve ", "The bloody unicorns ", "Hongerige Vossen ", 
+"Bloedzuigers ", "The Walking Scouts ", "The Survivors ", "The Walking SPI ", 
+"Gevaarlijke Valken ", "Last of us ", "Timberwolves "
+];
+
 new Vue({
     el: '.main',
     data: {
-        step: 10,
+        step: 1,
         name: '',
         players: [],
         playerCount: 1,
@@ -17,29 +25,37 @@ new Vue({
             this.players = JSON.parse(localStorage.getItem('sKPlayers'));
             this.history = JSON.parse(localStorage.getItem('sKHistory'));
         }
+        else{
+            for(var name of teamNames)
+                this.addPlayerWithName(name);
+        }
     },
     methods: {
-        addPlayer: function() {
-            var name = this.name || 'player' + this.playerCount;
+        addPlayerWithName: function(nameArg) {
+            var name = nameArg || 'player' + this.playerCount;
             for(var v of this.players)
                 if(v.name == name.toLowerCase())
                     return this.warning = 'This name is not available.';
             this.warning = '';
             this.playerCount++;
-            this.players.push({name: name.toLowerCase(), points: 0});
+            this.players.push({name: name.toLowerCase(), points: 0, color: this.randColor()});
             this.addHistory(name + ' has join the game.');
             this.name = '';
             this.updateRank();
         },
 
+        addPlayer: function() {
+            return this.addPlayerWithName(this.name);
+        },
+        
         removePlayer: function(index) {
             this.addHistory(this.players[index].name + ' has left the game.');
             this.players.splice(index, 1);
         },
 
-        addPoints: function(index) {
-            this.addHistory(this.players[index].name + ' has won ' + this.step + ' points');
-            this.players[index].points += this.step;
+        addPoints: function(index, points) {
+            this.addHistory(this.players[index].name + ' has won ' + this.step*points + ' points');
+            this.players[index].points += this.step*points;
             this.updateRank();
         },
 
@@ -96,6 +112,10 @@ new Vue({
             localStorage.removeItem('sKPlayers');
             localStorage.removeItem('sKHistory');
         },
+
+	randColor: function() {
+	   return 'hsl('+Math.floor(Math.random()*361)+',80%,70%)'; 
+	},
 
         refresh: function(samePlayers) {
             if(samePlayers) {
