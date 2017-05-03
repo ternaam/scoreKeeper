@@ -1,10 +1,10 @@
 var teamNames = [
-"Zombie girls ", "D.Z.V.D.B. ", "Breinbrekers ", "Bonecrashers ", 
-"Bloederige Wolven ", "ZomSpi's ", "Zombie killers ", "The walking dead ", 
-"Tienduizend Scouting Zombies ", "Diva's van Doeve ", "The bloody unicorns ", "Hongerige Vossen ", 
-"Bloedzuigers ", "The Walking Scouts ", "The Survivors ", "The Walking SPI ", 
-"Gevaarlijke Valken ", "Last of us ", "Timberwolves "
-];
+"Totally Spies", "Super SPI Scouts", "Superzito", 
+"Thunder scouts", "Cobra's", "The Avenger", 
+"The Defenders", "SuperFoxes", "Powerscouts", 
+"Super Zwerver", "The Wolverines", "Superscouts", 
+"Badscouts", "Fenixen"
+]
 
 new Vue({
     el: '.main',
