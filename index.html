@@ -32,7 +32,7 @@
 					<tr v-for="player in players" transition="fade" :key="player.id" :style="{'background-color':  player.color }">
 						<td v-if="$index+1 < 4" class="rank{{$index+1}}"> {{ $index+1 | rank }} </td>
 						<td v-else> {{ $index+1 | rank }} </td>
-						<td class="name">{{ player.name | capitalize }}
+						<td class="name">{{ player.name }}
 						  <span class="points">{{ player.points }}</span></td>
 						<td v-show="!gameOver" class="btn-group"><button v-on:click="addPoints($index, 1)" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span></button>
 						<button v-on:click="addPoints($index, 3)" class="btn btn-default"><span class="glyphicon glyphicon-plus-sign"></span><span class="glyphicon glyphicon-plus-sign"></span><span class="glyphicon glyphicon-plus-sign"></span></button>

@@ -34,11 +34,11 @@ new Vue({
         addPlayerWithName: function(nameArg) {
             var name = nameArg || 'player' + this.playerCount;
             for(var v of this.players)
-                if(v.name == name.toLowerCase())
+                if(v.name.toLowerCase() == name.toLowerCase())
                     return this.warning = 'This name is not available.';
             this.warning = '';
             this.playerCount++;
-            this.players.push({name: name.toLowerCase(), points: 0, color: this.randColor()});
+            this.players.push({name: name, points: 0, color: this.randColor()});
             this.addHistory(name + ' has join the game.');
             this.name = '';
             this.updateRank();
